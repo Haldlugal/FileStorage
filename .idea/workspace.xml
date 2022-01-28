@@ -5,29 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-storage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/object.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TestSerialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TransferObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Client.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Handler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Server.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/serial/TestSerialization.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/serial/TransferObject.class" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/.idea/encodings.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TransferFileModel.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/data/object.txt" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,7 +26,16 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="JsBowerSettings">
+    <bower-package value="" />
+    <bower.json value="" />
   </component>
   <component name="ProjectId" id="241FgGZMv2xk2uGzHlca45AqkLF" />
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
@@ -53,12 +46,17 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="SHARE_PROJECT_CONFIGURATION_FILES" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="last_opened_file_path" value="$USER_HOME$/AppData/Local/SceneBuilder/SceneBuilder.exe" />
+    <property name="project.structure.last.edited" value="SDKs" />
+    <property name="project.structure.proportion" value="0.0" />
+    <property name="project.structure.side.proportion" value="0.0" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
-  <component name="RunManager" selected="Application.TestSerialization">
+  <component name="RunManager" selected="Application.App">
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.geekbrains.cloud.jan.App" />
       <module name="cloud-storage" />
@@ -100,9 +98,9 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestSerialization" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.TestSerialization" />
       </list>
     </recent_temporary>
   </component>
@@ -123,5 +121,20 @@
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XSLT-Support.FileAssociations.UIState">
+    <expand />
+    <select />
   </component>
 </project>

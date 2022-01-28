@@ -1,14 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import javafx.scene.control.ListView?>
-<?import javafx.scene.control.TextField?>
+<?import javafx.scene.control.Button?>
 <?import javafx.scene.layout.AnchorPane?>
 
-
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0"
-            prefWidth="388.0" xmlns="http://javafx.com/javafx/8"
-            xmlns:fx="http://javafx.com/fxml/1"
-            fx:controller="com.geekbrains.cloud.jan.Client">
-   <ListView fx:id="listView" layoutX="14.0" layoutY="14.0" prefHeight="488.0" prefWidth="358.0"/>
-   <TextField onAction="#sendMessage" fx:id="textField" alignment="CENTER_RIGHT" layoutX="14.0" layoutY="502.0" prefHeight="45.0" prefWidth="358.0"/>
+<AnchorPane fx:id="anchorPane" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="557.0" prefWidth="388.0" xmlns="http://javafx.com/javafx/8.0" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.cloud.jan.Client">
+   <Button fx:id="fileButton" layoutX="70.0" layoutY="261.0" mnemonicParsing="false" prefHeight="36.0" prefWidth="247.0" text="Browse File" />
 </AnchorPane>
