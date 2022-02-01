@@ -12,14 +12,23 @@ import java.util.ResourceBundle;
 
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.event.EventHandler;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
+import javafx.scene.control.TextField;
+import javafx.scene.input.KeyCode;
+import javafx.scene.input.KeyEvent;
 
 public class Client implements Initializable {
 
     private static final int SIZE = 256;
     public ListView<String> clientView;
     public ListView<String> serverView;
+    public Button clientUpFolderBtn;
+    public Button serverUpFolderBtn;
+    public TextField clientPath;
+    public TextField serverPath;
     private Path clientDir;
     private DataInputStream is;
     private DataOutputStream os;
@@ -65,15 +74,36 @@ public class Client implements Initializable {
             buf = new byte[SIZE];
             clientDir = Paths.get(System.getProperty("user.home"));
             updateClientView();
+            clientPath.setText(clientDir.toString());
+
             Socket socket = new Socket("localhost", 8189);
             System.out.println("Network created...");
             is = new DataInputStream(socket.getInputStream());
             os = new DataOutputStream(socket.getOutputStream());
+
             Thread readThread = new Thread(this::readLoop);
             readThread.setDaemon(true);
             readThread.start();
         } catch (Exception e) {
             e.printStackTrace();
+        }
+    }
+
+
+    public void goUpDirClient() {
+        if (clientDir.getParent() != null) {
+            clientDir = clientDir.getParent();
+            clientPath.setText(clientDir.toString());
+            updateClientView();
+        }
+    }
+
+    public void changeClientDir(KeyEvent actionEvent) {
+        if (actionEvent.getCode().equals(KeyCode.ENTER)) {
+            if (Files.isDirectory(Paths.get(clientPath.getText()))) {
+                clientDir = Paths.get(clientPath.getText());
+                updateClientView();
+            }
         }
     }
 
@@ -89,4 +119,6 @@ public class Client implements Initializable {
         os.writeUTF(fileName);
         os.flush();
     }
+
+
 }
