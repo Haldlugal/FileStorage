@@ -18,8 +18,10 @@ import static com.geekbrains.cloud.jan.Sender.sendFile;
 public class Handler implements Runnable {
 
     private static final int SIZE = 256;
+    private static final String DATA_FOLDER = "data";
 
     private Path clientDir;
+    private String clientName = "testClient";
     private DataInputStream is;
     private DataOutputStream os;
     private final byte[] buf;
@@ -27,7 +29,7 @@ public class Handler implements Runnable {
     public Handler(Socket socket) throws IOException {
         is = new DataInputStream(socket.getInputStream());
         os = new DataOutputStream(socket.getOutputStream());
-        clientDir = Paths.get("data");
+        clientDir = Paths.get(DATA_FOLDER + "/" + clientName);
         buf = new byte[SIZE];
         sendServerFiles();
     }
@@ -37,6 +39,7 @@ public class Handler implements Runnable {
                 .map(p -> p.getFileName().toString())
                 .collect(Collectors.toList());
         os.writeUTF("#list#");
+        os.writeUTF(clientDir.toString());
         os.writeInt(files.size());
         for (String file : files) {
             os.writeUTF(file);
@@ -46,6 +49,7 @@ public class Handler implements Runnable {
 
     @Override
     public void run() {
+
         try {
             while (true) {
                 String command = is.readUTF();
@@ -56,6 +60,21 @@ public class Handler implements Runnable {
                 } else if (command.equals("#get_file#")) {
                     String fileName = is.readUTF();
                     sendFile(fileName, os, clientDir);
+                } else if (command.equals("#change_dir#")) {
+                    String newDir = is.readUTF();
+                    if (newDir.startsWith(DATA_FOLDER + "\\" + clientName) && Files.isDirectory(Paths.get(newDir))) {
+                        clientDir = Paths.get(newDir);
+
+                    }
+                    sendServerFiles();
+                } else if (command.equals("#change_dir_up#")) {
+                    System.out.println(clientDir.toString());
+                    System.out.println();
+//                    if (clientDir.toString().equals(Paths.get(DATA_FOLDER + "/" + clientName))) {
+                    if (clientDir.compareTo(Paths.get(DATA_FOLDER + "/" + clientName)) != 0) {
+                        clientDir = clientDir.getParent();
+                        sendServerFiles();
+                    }
                 }
             }
         } catch (Exception e) {

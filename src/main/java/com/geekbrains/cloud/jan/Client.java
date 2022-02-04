@@ -8,6 +8,7 @@ import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
 import java.nio.file.Paths;
+import java.util.List;
 import java.util.ResourceBundle;
 
 import javafx.application.Platform;
@@ -42,6 +43,8 @@ public class Client implements Initializable {
                 System.out.println("received: " + command);// wait message
                 if (command.equals("#list#")) {
                     Platform.runLater(() -> serverView.getItems().clear());
+                    String newServerDir = is.readUTF();
+                    serverPath.setText(newServerDir);
                     int filesCount = is.readInt();
                     for (int i = 0; i < filesCount; i++) {
                         String fileName = is.readUTF();
@@ -98,12 +101,23 @@ public class Client implements Initializable {
         }
     }
 
+    public void goUpServerClient() throws IOException {
+        os.writeUTF("#change_dir_up#");
+    }
+
     public void changeClientDir(KeyEvent actionEvent) {
         if (actionEvent.getCode().equals(KeyCode.ENTER)) {
             if (Files.isDirectory(Paths.get(clientPath.getText()))) {
                 clientDir = Paths.get(clientPath.getText());
                 updateClientView();
             }
+        }
+    }
+
+    public void changeServerDir(KeyEvent actionEvent) throws IOException {
+        if (actionEvent.getCode().equals(KeyCode.ENTER)) {
+            os.writeUTF("#change_dir#");
+            os.writeUTF(serverPath.getText());
         }
     }
 
