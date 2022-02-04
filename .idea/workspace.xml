@@ -4,30 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/jarRepositories.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/cloud-storage.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/object.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/App.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Server.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TestSerialization.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TransferObject.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/App.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Client.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Handler.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/Server.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/serial/TestSerialization.class" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/target/classes/com/geekbrains/cloud/jan/serial/TransferObject.class" afterDir="false" />
+    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="Lesson 2: Changing directories">
+      <change afterPath="$PROJECT_DIR$/data/testClient/inner/testFile" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Handler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -42,6 +24,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$" value="master" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="ProjectId" id="241FgGZMv2xk2uGzHlca45AqkLF" />
@@ -56,15 +43,65 @@
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
+    <property name="extract.method.default.visibility" value="private" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
     <property name="settings.editor.selected.configurable" value="reference.settingsdialog.IDE.editor.colors" />
   </component>
-  <component name="RunManager" selected="Application.TestSerialization">
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\haldlugal\IdeaProjects\cloud-storage-jan-2022-1\data\testClient" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Application.App">
+    <configuration default="true" type="ArquillianJUnit" factoryName="" nameIsGenerated="true">
+      <option name="arquillianRunConfiguration">
+        <value>
+          <option name="containerStateName" value="" />
+        </value>
+      </option>
+      <option name="TEST_OBJECT" value="class" />
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
     <configuration name="App" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="com.geekbrains.cloud.jan.App" />
       <module name="cloud-storage" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="com.geekbrains.cloud.jan.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="Buffers" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbrains.cloud.jan.nio.Buffers" />
+      <module name="cloud-storage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbrains.cloud.jan.nio.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="NioExamples" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="com.geekbrains.cloud.jan.nio.NioExamples" />
+      <module name="cloud-storage" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="com.geekbrains.cloud.jan.nio.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -100,9 +137,11 @@
     </configuration>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.TestSerialization" />
         <item itemvalue="Application.App" />
         <item itemvalue="Application.Server" />
+        <item itemvalue="Application.Buffers" />
+        <item itemvalue="Application.NioExamples" />
+        <item itemvalue="Application.TestSerialization" />
       </list>
     </recent_temporary>
   </component>
@@ -118,10 +157,48 @@
       <option name="presentableId" value="Default" />
       <updated>1642790295808</updated>
       <workItem from="1642790297407" duration="2859000" />
+      <workItem from="1643130605411" duration="6714000" />
+      <workItem from="1643956331645" duration="3529000" />
     </task>
+    <task id="LOCAL-00001" summary="Lesson 2: Changing directories">
+      <created>1643718617236</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1643718617236</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="master" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
+          </value>
+        </entry>
+      </map>
+    </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Lesson 2: Changing directories" />
+    <option name="LAST_COMMIT_MESSAGE" value="Lesson 2: Changing directories" />
   </component>
 </project>
