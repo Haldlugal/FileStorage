@@ -8,9 +8,7 @@ public class CloudServer extends com.geekbrains.cloud.jan.server.BaseNettyServer
 
     public CloudServer() {
         super(
-                new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                new ObjectEncoder(),
-                new com.geekbrains.cloud.jan.server.CloudServerHandler()
+
         );
     }
 

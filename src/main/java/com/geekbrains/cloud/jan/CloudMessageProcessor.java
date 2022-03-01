@@ -3,9 +3,11 @@ package com.geekbrains.cloud.jan;
 import com.geekbrains.cloud.jan.model.CloudMessage;
 import com.geekbrains.cloud.jan.model.FileMessage;
 import com.geekbrains.cloud.jan.model.ListMessage;
+import com.geekbrains.cloud.jan.model.LoginResponse;
 import javafx.application.Platform;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
+import javafx.scene.layout.Pane;
 
 import java.io.IOException;
 import java.nio.file.Files;
@@ -14,6 +16,7 @@ import java.nio.file.Path;
 public class CloudMessageProcessor {
 
     private Path clientDir;
+    public Pane loginUI;
     public ListView<String> clientView;
     public ListView<String> serverView;
     public TextField serverPathField;
@@ -21,14 +24,17 @@ public class CloudMessageProcessor {
     public CloudMessageProcessor(Path clientDir,
                                  ListView<String> clientView,
                                  ListView<String> serverView,
-                                    TextField serverPathField) {
+                                    TextField serverPathField,
+                                 Pane loginUI) {
         this.clientDir = clientDir;
         this.clientView = clientView;
         this.serverView = serverView;
         this.serverPathField = serverPathField;
+        this.loginUI = loginUI;
     }
 
     public void processMessage(CloudMessage message) throws IOException {
+        System.out.println(message.getType());
         switch (message.getType()) {
             case LIST:
                 processMessage((ListMessage) message);
@@ -36,6 +42,14 @@ public class CloudMessageProcessor {
             case FILE:
                 processMessage((FileMessage) message);
                 break;
+            case LOGIN_RESPONSE:
+                processMessage((LoginResponse) message);
+        }
+    }
+
+    public void processMessage(LoginResponse message) {
+        if (message.isSuccess()) {
+            loginUI.setVisible(false);
         }
     }
 
