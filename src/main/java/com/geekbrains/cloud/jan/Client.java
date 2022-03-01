@@ -8,20 +8,25 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.util.ResourceBundle;
 
-import com.geekbrains.cloud.jan.model.ChangeDirMessage;
-import com.geekbrains.cloud.jan.model.CloudMessage;
-import com.geekbrains.cloud.jan.model.FileMessage;
-import com.geekbrains.cloud.jan.model.FileRequest;
-import io.netty.handler.codec.serialization.ObjectDecoderInputStream;
-import io.netty.handler.codec.serialization.ObjectEncoderOutputStream;
+import com.geekbrains.cloud.jan.model.*;
+import io.netty.bootstrap.Bootstrap;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelInitializer;
+import io.netty.channel.nio.NioEventLoopGroup;
+import io.netty.channel.socket.SocketChannel;
+import io.netty.channel.socket.nio.NioSocketChannel;
+import io.netty.handler.codec.serialization.*;
 import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
+import javafx.scene.Group;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
 import javafx.scene.input.KeyCode;
 import javafx.scene.input.KeyEvent;
+import javafx.scene.layout.Pane;
 
 public class Client implements Initializable {
 
@@ -32,22 +37,16 @@ public class Client implements Initializable {
     public Button serverUpFolderBtn;
     public TextField clientPathField;
     public TextField serverPathField;
+    public Group mainUI;
+    public Pane loginUI;
+    public TextField passwordField;
+    public TextField loginField;
     private Path clientDir;
     private CloudMessageProcessor processor;
-    private ObjectDecoderInputStream is;
-    private ObjectEncoderOutputStream os;
-    private byte[] buf;
 
-    private void readLoop() {
-        try {
-            while (true) {
-                CloudMessage message = (CloudMessage) is.readObject();
-                processor.processMessage(message);
-            }
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
-    }
+    private static NioEventLoopGroup workerGroup;
+    private static Bootstrap bootstrap;
+    private static Channel channel;
 
     private void updateClientView() {
         try {
@@ -67,14 +66,24 @@ public class Client implements Initializable {
             clientDir = Paths.get(System.getProperty("user.home"));
             updateClientView();
             initMouseListeners();
-            processor = new CloudMessageProcessor(clientDir, clientView, serverView, serverPathField);
-            Socket socket = new Socket("localhost", 8189);
-            System.out.println("Network created...");
-            os = new ObjectEncoderOutputStream(socket.getOutputStream());
-            is = new ObjectDecoderInputStream(socket.getInputStream());
-            Thread readThread = new Thread(this::readLoop);
-            readThread.setDaemon(true);
-            readThread.start();
+            processor = new CloudMessageProcessor(clientDir, clientView, serverView, serverPathField, loginUI);
+
+            workerGroup = new NioEventLoopGroup();
+            bootstrap = new Bootstrap();
+            bootstrap.group(workerGroup);
+            bootstrap.channel(NioSocketChannel.class);
+            bootstrap.handler(new ChannelInitializer<SocketChannel>() {
+                @Override
+                public void initChannel(SocketChannel ch) throws Exception {
+                    ch.pipeline().addLast(
+                            new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                            new ObjectEncoder(),
+                            new ClientMainHandler(processor)
+                    );
+                }
+            });
+            ChannelFuture channelFuture = bootstrap.connect("localhost", 8189);
+            channel = channelFuture.channel();
         } catch (Exception e) {
             e.printStackTrace();
         }
@@ -114,7 +123,7 @@ public class Client implements Initializable {
     public void goUpServerClient() throws IOException {
         ChangeDirMessage msg = new ChangeDirMessage(serverPathField.getText());
         msg.setGoUp(true);
-        os.writeObject(msg);
+        channel.writeAndFlush(msg);
     }
 
     public void changeClientDir(KeyEvent actionEvent) {
@@ -132,20 +141,25 @@ public class Client implements Initializable {
 
     public void changeServerDir(KeyEvent actionEvent) throws IOException {
         if (actionEvent.getCode().equals(KeyCode.ENTER)) {
-            os.writeObject(new ChangeDirMessage(serverPathField.getText()));
+            channel.writeAndFlush(new ChangeDirMessage(serverPathField.getText()));
         }
     }
 
     public void upload(ActionEvent actionEvent) throws IOException {
         String fileName = clientView.getSelectionModel().getSelectedItem();
-        os.writeObject(new FileMessage(clientDir.resolve(fileName)));
+        channel.writeAndFlush(new FileMessage(clientDir.resolve(fileName)));
     }
 
 
     public void download(ActionEvent actionEvent) throws IOException {
         String fileName = serverView.getSelectionModel().getSelectedItem();
-        os.writeObject(new FileRequest(fileName));
+        channel.writeAndFlush(new FileRequest(fileName));
     }
 
+    public void login() {
+        String login = loginField.getText();
+        String password = passwordField.getText();
+        channel.writeAndFlush(new LoginRequest(login, password));
+    }
 
 }

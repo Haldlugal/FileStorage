@@ -4,14 +4,27 @@
 <?import javafx.scene.control.ListView?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.shape.Rectangle?>
 
+<?import javafx.scene.Group?>
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.geekbrains.cloud.jan.Client">
-   <ListView fx:id="clientView" layoutX="14.0" layoutY="51.0" prefHeight="332.0" prefWidth="253.0" />
-   <ListView fx:id="serverView" layoutX="333.0" layoutY="51.0" prefHeight="332.0" prefWidth="253.0" />
-   <Button layoutX="280.0" layoutY="117.0" mnemonicParsing="false" onAction="#upload" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
-   <Button layoutX="280.0" layoutY="211.0" mnemonicParsing="false" onAction="#download" prefHeight="40.0" prefWidth="40.0" text="&lt;" />
-   <TextField fx:id="clientPathField" onKeyPressed="#changeClientDir" layoutX="14.0" layoutY="14.0" prefHeight="25.0" prefWidth="206.0" />
-   <TextField fx:id="serverPathField" onKeyPressed="#changeServerDir" layoutX="333.0" layoutY="14.0" prefHeight="25.0" prefWidth="206.0" />
-   <Button fx:id="serverUpFolderBtn" onAction="#goUpServerClient" layoutX="546.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Button" />
-   <Button fx:id="clientUpFolderBtn" onAction="#goUpDirClient"  layoutX="227.0" layoutY="14.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="40.0" text="Button" />
+   <Group fx:id="mainUI">
+      <ListView fx:id="clientView" layoutX="14.0" layoutY="51.0" prefHeight="332.0" prefWidth="253.0" />
+      <ListView fx:id="serverView" layoutX="333.0" layoutY="51.0" prefHeight="332.0" prefWidth="253.0" />
+      <Button layoutX="280.0" layoutY="117.0" mnemonicParsing="false" onAction="#upload" prefHeight="40.0" prefWidth="40.0" text="&gt;" />
+      <Button layoutX="280.0" layoutY="211.0" mnemonicParsing="false" onAction="#download" prefHeight="40.0" prefWidth="40.0" text="&lt;" />
+      <TextField fx:id="clientPathField" layoutX="14.0" layoutY="14.0" onKeyPressed="#changeClientDir" prefHeight="25.0" prefWidth="206.0" />
+      <TextField fx:id="serverPathField" onKeyPressed="#changeServerDir" layoutX="333.0" layoutY="14.0" prefHeight="25.0" prefWidth="206.0" />
+      <Button fx:id="serverUpFolderBtn" layoutX="546.0" layoutY="14.0" mnemonicParsing="false" onAction="#goUpServerClient" prefHeight="25.0" prefWidth="40.0" text="Button" />
+      <Button fx:id="clientUpFolderBtn" layoutX="227.0" layoutY="14.0" mnemonicParsing="false" onAction="#goUpDirClient" prefHeight="25.0" prefWidth="40.0" text="Button" />
+   </Group>
+   <Pane fx:id="loginUI" layoutX="168.0" layoutY="128.0" prefHeight="145.0" prefWidth="265.0">
+      <children>
+         <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#0d7ee8" height="145.0" layoutY="-1.0" stroke="#ae1b1b" strokeType="INSIDE" width="265.0" />
+         <Button onMouseClicked="#login" layoutX="110.0" layoutY="106.0" mnemonicParsing="false" text="Login" />
+         <TextField fx:id="loginField" layoutX="30.0" layoutY="14.0" prefHeight="25.0" prefWidth="206.0" promptText="Login" />
+         <TextField fx:id="passwordField" layoutX="30.0" layoutY="60.0" prefHeight="25.0" prefWidth="206.0" promptText="Password" />
+      </children>
+   </Pane>
 </AnchorPane>
