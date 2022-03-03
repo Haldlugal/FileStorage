@@ -4,33 +4,9 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="Авторизация">
-      <change afterPath="$PROJECT_DIR$/.idea/runConfigurations.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/test1/object.txt" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/test1/ouch/not" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/data/test2/testFile" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/ClientMainHandler.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/model/LoginRequest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/model/LoginResponse.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/model/User.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/AuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/DbAuthService.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/utils/DBCreator.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/compiler.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/compiler.xml" afterDir="false" />
+    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="Перевод проекта на Нетти">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/CloudMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/CloudMessageProcessor.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/model/CommandType.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/model/CommandType.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/nio/Buffers.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/nio/NioExamples.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/nio/Watcher.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TestSerialization.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/serial/TransferObject.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/BaseNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/BaseNettyServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServer.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServerHandler.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/com/geekbrains/cloud/jan/layout.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,7 +24,7 @@
   <component name="Git.Settings">
     <option name="RECENT_BRANCH_BY_REPOSITORY">
       <map>
-        <entry key="$PROJECT_DIR$" value="lesson_2" />
+        <entry key="$PROJECT_DIR$" value="lesson_4" />
       </map>
     </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
@@ -201,6 +177,8 @@
       <workItem from="1644488941676" duration="5631000" />
       <workItem from="1645328927229" duration="7500000" />
       <workItem from="1646115374308" duration="3280000" />
+      <workItem from="1646147765054" duration="542000" />
+      <workItem from="1646285828111" duration="1717000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 2: Changing directories">
       <created>1643718617236</created>
@@ -216,7 +194,14 @@
       <option name="project" value="LOCAL" />
       <updated>1644323761749</updated>
     </task>
-    <option name="localTasksCounter" value="3" />
+    <task id="LOCAL-00003" summary="Перевод проекта на Нетти">
+      <created>1646147868575</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1646147868575</updated>
+    </task>
+    <option name="localTasksCounter" value="4" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -250,6 +235,7 @@
     <MESSAGE value="Lesson 2: Changing directories" />
     <MESSAGE value="Сервер на Нетти. Навигация со стороны клиента." />
     <MESSAGE value="Авторизация" />
-    <option name="LAST_COMMIT_MESSAGE" value="Авторизация" />
+    <MESSAGE value="Перевод проекта на Нетти" />
+    <option name="LAST_COMMIT_MESSAGE" value="Перевод проекта на Нетти" />
   </component>
 </project>

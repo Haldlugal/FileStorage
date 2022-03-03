@@ -92,7 +92,7 @@ public class Client implements Initializable {
     private void initMouseListeners() {
         clientView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                Path current = clientDir.resolve(getItem());
+                Path current = clientDir.resolve(clientView.getSelectionModel().getSelectedItem());
                 if (Files.isDirectory(current)) {
                     clientDir = current;
                     Platform.runLater(this::updateClientView);
@@ -102,14 +102,17 @@ public class Client implements Initializable {
 
         serverView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                // todo Home Work
+                String selectedItem = serverView.getSelectionModel().getSelectedItem().toString();
+                String newPath = serverPathField.getText() + "\\" + selectedItem;
+                System.out.println(newPath);
+                try {
+                    channel.writeAndFlush(new ChangeDirMessage(newPath));
+                } catch (IOException ex) {
+                    ex.printStackTrace();
+                }
             }
         });
 
-    }
-
-    private String getItem() {
-        return clientView.getSelectionModel().getSelectedItem();
     }
 
 
