@@ -20,21 +20,19 @@ public class BaseNettyServer {
                     .channel(NioServerSocketChannel.class)
                     .childHandler(new ChannelInitializer<SocketChannel>() {
                         @Override
-                        protected void initChannel(SocketChannel socketChannel) throws Exception {
+                        protected void initChannel(SocketChannel socketChannel) {
                             socketChannel.pipeline().addLast(new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
                                     new ObjectEncoder(),
                                     new com.geekbrains.cloud.jan.server.CloudServerHandler()
                             );
                         }
                     });
-            ;
             ChannelFuture future = bootstrap.bind(8189).sync();
-            // server started!
+            System.out.println("server started!");
             future.channel().closeFuture().sync(); // block
         } catch (InterruptedException e) {
             e.printStackTrace();
         } finally {
-            System.out.println("i am here");
             auth.shutdownGracefully();
             worker.shutdownGracefully();
         }

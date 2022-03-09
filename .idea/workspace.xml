@@ -4,9 +4,15 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="Перевод проекта на Нетти">
+    <list default="true" id="50a6a6ae-b9d6-43e9-a585-28c1b6943fed" name="Default Changelist" comment="Навигация по серверным папкам">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pom.xml" beforeDir="false" afterPath="$PROJECT_DIR$/pom.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/Client.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/ClientMainHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/ClientMainHandler.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/CloudMessageProcessor.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/ClientMessageProcessor.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/BaseNettyServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/BaseNettyServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServer.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServer.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServerHandler.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/com/geekbrains/cloud/jan/server/CloudServerHandler.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,7 +57,7 @@
     <property name="android.sdk.path" value="$USER_HOME$/Library/Android/sdk" />
     <property name="aspect.path.notification.shown" value="true" />
     <property name="extract.method.default.visibility" value="private" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/data/test2" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/src/main/resources" />
     <property name="node.js.detected.package.tslint" value="true" />
     <property name="node.js.path.for.package.tslint" value="project" />
     <property name="node.js.selected.package.tslint" value="(autodetect)" />
@@ -59,11 +65,11 @@
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\src\main\resources" />
       <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\data\test2" />
       <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\data\test1" />
       <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\src\main\java\com\geekbrains\cloud\jan" />
       <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\src\main\java\com\geekbrains\cloud\jan\server" />
-      <recent name="C:\Users\haldlugal\IdeaProjects\FileStorage\src\main\java\com\geekbrains\cloud\jan\model" />
     </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="C:\Users\haldlugal\IdeaProjects\cloud-storage-jan-2022-1\data\testClient" />
@@ -178,7 +184,8 @@
       <workItem from="1645328927229" duration="7500000" />
       <workItem from="1646115374308" duration="3280000" />
       <workItem from="1646147765054" duration="542000" />
-      <workItem from="1646285828111" duration="1717000" />
+      <workItem from="1646285828111" duration="2857000" />
+      <workItem from="1646799881039" duration="3708000" />
     </task>
     <task id="LOCAL-00001" summary="Lesson 2: Changing directories">
       <created>1643718617236</created>
@@ -201,7 +208,14 @@
       <option name="project" value="LOCAL" />
       <updated>1646147868575</updated>
     </task>
-    <option name="localTasksCounter" value="4" />
+    <task id="LOCAL-00004" summary="Навигация по серверным папкам">
+      <created>1646287812073</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1646287812073</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -236,6 +250,7 @@
     <MESSAGE value="Сервер на Нетти. Навигация со стороны клиента." />
     <MESSAGE value="Авторизация" />
     <MESSAGE value="Перевод проекта на Нетти" />
-    <option name="LAST_COMMIT_MESSAGE" value="Перевод проекта на Нетти" />
+    <MESSAGE value="Навигация по серверным папкам" />
+    <option name="LAST_COMMIT_MESSAGE" value="Навигация по серверным папкам" />
   </component>
 </project>

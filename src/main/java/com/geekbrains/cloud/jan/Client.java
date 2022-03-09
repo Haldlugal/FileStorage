@@ -1,7 +1,6 @@
 package com.geekbrains.cloud.jan;
 
 import java.io.IOException;
-import java.net.Socket;
 import java.net.URL;
 import java.nio.file.Files;
 import java.nio.file.Path;
@@ -18,7 +17,6 @@ import io.netty.channel.socket.SocketChannel;
 import io.netty.channel.socket.nio.NioSocketChannel;
 import io.netty.handler.codec.serialization.*;
 import javafx.application.Platform;
-import javafx.event.ActionEvent;
 import javafx.fxml.Initializable;
 import javafx.scene.Group;
 import javafx.scene.control.Button;
@@ -30,7 +28,6 @@ import javafx.scene.layout.Pane;
 
 public class Client implements Initializable {
 
-    private static final int SIZE = 256;
     public ListView<String> clientView;
     public ListView<String> serverView;
     public Button clientUpFolderBtn;
@@ -41,14 +38,11 @@ public class Client implements Initializable {
     public Pane loginUI;
     public TextField passwordField;
     public TextField loginField;
-    private Path clientDir;
-    private CloudMessageProcessor processor;
-
-    private static NioEventLoopGroup workerGroup;
-    private static Bootstrap bootstrap;
+    public Path clientDir;
+    private ClientMessageProcessor processor;
     private static Channel channel;
 
-    private void updateClientView() {
+    public void updateClientView() {
         try {
             updateClientPathField();
             clientView.getItems().clear();
@@ -62,31 +56,26 @@ public class Client implements Initializable {
 
     @Override
     public void initialize(URL location, ResourceBundle resources) {
-        try {
-            clientDir = Paths.get(System.getProperty("user.home"));
-            updateClientView();
-            initMouseListeners();
-            processor = new CloudMessageProcessor(clientDir, clientView, serverView, serverPathField, loginUI);
+        clientDir = Paths.get(System.getProperty("user.home"));
+        initMouseListeners();
+        processor = new ClientMessageProcessor(this);
 
-            workerGroup = new NioEventLoopGroup();
-            bootstrap = new Bootstrap();
-            bootstrap.group(workerGroup);
-            bootstrap.channel(NioSocketChannel.class);
-            bootstrap.handler(new ChannelInitializer<SocketChannel>() {
-                @Override
-                public void initChannel(SocketChannel ch) throws Exception {
-                    ch.pipeline().addLast(
-                            new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
-                            new ObjectEncoder(),
-                            new ClientMainHandler(processor)
-                    );
-                }
-            });
-            ChannelFuture channelFuture = bootstrap.connect("localhost", 8189);
-            channel = channelFuture.channel();
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        NioEventLoopGroup workerGroup = new NioEventLoopGroup();
+        Bootstrap bootstrap = new Bootstrap();
+        bootstrap.group(workerGroup);
+        bootstrap.channel(NioSocketChannel.class);
+        bootstrap.handler(new ChannelInitializer<SocketChannel>() {
+            @Override
+            public void initChannel(SocketChannel ch) {
+                ch.pipeline().addLast(
+                        new ObjectDecoder(ClassResolvers.cacheDisabled(null)),
+                        new ObjectEncoder(),
+                        new ClientMainHandler(processor)
+                );
+            }
+        });
+        ChannelFuture channelFuture = bootstrap.connect("localhost", 8189);
+        channel = channelFuture.channel();
     }
 
     private void initMouseListeners() {
@@ -94,7 +83,7 @@ public class Client implements Initializable {
             if (e.getClickCount() == 2) {
                 Path current = clientDir.resolve(clientView.getSelectionModel().getSelectedItem());
                 if (Files.isDirectory(current)) {
-                    clientDir = current;
+                    this.setClientDir(current);
                     Platform.runLater(this::updateClientView);
                 }
             }
@@ -102,7 +91,7 @@ public class Client implements Initializable {
 
         serverView.setOnMouseClicked(e -> {
             if (e.getClickCount() == 2) {
-                String selectedItem = serverView.getSelectionModel().getSelectedItem().toString();
+                String selectedItem = serverView.getSelectionModel().getSelectedItem();
                 String newPath = serverPathField.getText() + "\\" + selectedItem;
                 System.out.println(newPath);
                 try {
@@ -115,10 +104,9 @@ public class Client implements Initializable {
 
     }
 
-
     public void goUpDirClient() {
         if (clientDir.getParent() != null) {
-            clientDir = clientDir.getParent();
+            this.setClientDir(clientDir.getParent());
             updateClientView();
         }
     }
@@ -132,7 +120,7 @@ public class Client implements Initializable {
     public void changeClientDir(KeyEvent actionEvent) {
         if (actionEvent.getCode().equals(KeyCode.ENTER)) {
             if (Files.isDirectory(Paths.get(clientPathField.getText()))) {
-                clientDir = Paths.get(clientPathField.getText());
+                this.setClientDir(Paths.get(clientPathField.getText()));
                 updateClientView();
             }
         }
@@ -148,14 +136,15 @@ public class Client implements Initializable {
         }
     }
 
-    public void upload(ActionEvent actionEvent) throws IOException {
+    public void upload() throws IOException {
         String fileName = clientView.getSelectionModel().getSelectedItem();
         channel.writeAndFlush(new FileMessage(clientDir.resolve(fileName)));
     }
 
 
-    public void download(ActionEvent actionEvent) throws IOException {
+    public void download() {
         String fileName = serverView.getSelectionModel().getSelectedItem();
+        System.out.println(fileName);
         channel.writeAndFlush(new FileRequest(fileName));
     }
 
@@ -163,6 +152,10 @@ public class Client implements Initializable {
         String login = loginField.getText();
         String password = passwordField.getText();
         channel.writeAndFlush(new LoginRequest(login, password));
+    }
+
+    public void setClientDir(Path clientDir) {
+        this.clientDir = clientDir;
     }
 
 }

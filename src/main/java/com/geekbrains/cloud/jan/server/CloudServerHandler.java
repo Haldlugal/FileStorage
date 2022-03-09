@@ -22,7 +22,7 @@ public class CloudServerHandler extends SimpleChannelInboundHandler<CloudMessage
     private final AuthService authService = new DbAuthService();
 
     public CloudServerHandler() {
-        System.out.println("handler created!");
+
     }
 
     @Override
@@ -36,7 +36,7 @@ public class CloudServerHandler extends SimpleChannelInboundHandler<CloudMessage
     }
 
     @Override
-    public void channelActive(ChannelHandlerContext ctx) throws Exception {
+    public void channelActive(ChannelHandlerContext ctx) {
         authService.start();
         currentDir = Paths.get(DATA_FOLDER);
     }
@@ -74,7 +74,6 @@ public class CloudServerHandler extends SimpleChannelInboundHandler<CloudMessage
     }
 
     private void sendList(ChannelHandlerContext ctx) throws IOException {
-        System.out.println("sending list");
         ctx.writeAndFlush(new ListMessage(currentDir));
     }
 
@@ -89,18 +88,13 @@ public class CloudServerHandler extends SimpleChannelInboundHandler<CloudMessage
 
     private void processLogin(LoginRequest cloudMessage, ChannelHandlerContext ctx) throws IOException {
         Optional<User> user = authService.getNickByLoginAndPass(cloudMessage.getLogin(), cloudMessage.getPassword());
-
         if (user.isPresent()) {
-            System.out.println("login ok");
             currentDir = Paths.get(DATA_FOLDER + "\\" + user.get().nick);
             clientDir = Paths.get(DATA_FOLDER + "\\" + user.get().nick);
             sendList(ctx);
             ctx.writeAndFlush(new LoginResponse(user.get().nick, true));
         } else {
-            System.out.println("login fail");
             ctx.writeAndFlush(new LoginResponse("", false));
         }
-
-
     }
 }

@@ -5,32 +5,15 @@ import com.geekbrains.cloud.jan.model.FileMessage;
 import com.geekbrains.cloud.jan.model.ListMessage;
 import com.geekbrains.cloud.jan.model.LoginResponse;
 import javafx.application.Platform;
-import javafx.scene.control.ListView;
-import javafx.scene.control.TextField;
-import javafx.scene.layout.Pane;
-
 import java.io.IOException;
 import java.nio.file.Files;
-import java.nio.file.Path;
 
-public class CloudMessageProcessor {
+public class ClientMessageProcessor {
 
-    private Path clientDir;
-    public Pane loginUI;
-    public ListView<String> clientView;
-    public ListView<String> serverView;
-    public TextField serverPathField;
+    private final Client client;
 
-    public CloudMessageProcessor(Path clientDir,
-                                 ListView<String> clientView,
-                                 ListView<String> serverView,
-                                    TextField serverPathField,
-                                 Pane loginUI) {
-        this.clientDir = clientDir;
-        this.clientView = clientView;
-        this.serverView = serverView;
-        this.serverPathField = serverPathField;
-        this.loginUI = loginUI;
+    public ClientMessageProcessor(Client client) {
+        this.client = client;
     }
 
     public void processMessage(CloudMessage message) throws IOException {
@@ -49,33 +32,33 @@ public class CloudMessageProcessor {
 
     public void processMessage(LoginResponse message) {
         if (message.isSuccess()) {
-            loginUI.setVisible(false);
+            client.loginUI.setVisible(false);
+            client.updateClientView();
         }
     }
 
     public void processMessage(FileMessage message) throws IOException {
-        Files.write(clientDir.resolve(message.getFileName()), message.getBytes());
+        Files.write(client.clientDir.resolve(message.getFileName()), message.getBytes());
         Platform.runLater(this::updateClientView);
     }
 
     public void processMessage(ListMessage message) {
         Platform.runLater(() -> {
-            serverView.getItems().clear();
-            serverView.getItems().addAll(message.getFiles());
+            client.serverView.getItems().clear();
+            client.serverView.getItems().addAll(message.getFiles());
         });
-        serverPathField.setText(message.getPath());
+        client.serverPathField.setText(message.getPath());
     }
 
     private void updateClientView() {
         try {
-            clientView.getItems().clear();
-            Files.list(clientDir)
+            client.clientView.getItems().clear();
+            Files.list(client.clientDir)
                     .map(p -> p.getFileName().toString())
-                    .forEach(f -> clientView.getItems().add(f));
+                    .forEach(f -> client.clientView.getItems().add(f));
         } catch (IOException e) {
             e.printStackTrace();
         }
     }
-
 
 }
